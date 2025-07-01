@@ -1,0 +1,1 @@
+docker run -v .:/heracles-testbenches -it heracles-testbenches:latest
