@@ -21,7 +21,7 @@ N1 te 0 fecap
     let v_act = start_vset
     while v_act le stop_vset
         alter vset v_act
-        pre_osdi heracles_ngpsice.osdi
+        pre_osdi ../include/heracles_v0.2.1__osdi_v0.3.osdi
         tran 100n 1.2m
         write cv.raw
         set appendwrite

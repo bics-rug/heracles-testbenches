@@ -4,7 +4,7 @@ ground 0
 
 // Generic devices...
 load "resistor.osdi"
-load "heracles_vacask.osdi"
+load "../include/heracles_v0.2.1__osdi_v0.4.osdi"
 
 // ... and their models (create masters)
 model resistor resistor

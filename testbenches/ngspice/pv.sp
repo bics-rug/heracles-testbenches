@@ -10,7 +10,7 @@ R1 in te 50
 
 .probe I(V1)
 .control
-    pre_osdi heracles.osdi
+    pre_osdi ../include/heracles_v0.2.1__osdi_v0.3.osdi
     tran 1u 1m
     write pv.raw
 .endc

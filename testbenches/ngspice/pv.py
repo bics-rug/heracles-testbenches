@@ -13,7 +13,7 @@ circuit = Circuit("FeCap parameter extraction")
 circuit.raw_spice = """
     * Load OSDI model
     .control
-    pre_osdi heracles.osdi
+    pre_osdi ../include/heracles_v0.2.1__osdi_v0.3.osdi
     .endc
 
     * Model definition with current parameters

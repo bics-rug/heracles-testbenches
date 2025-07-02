@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import PySpice.Logging.Logging as Logging
 from PySpice.Spice.Netlist import Circuit
 
-steps = 40
+logger = Logging.setup_logging()
+
+steps = 20
 
 tstep = 1e-8
 tstop = 1.2e-3
@@ -26,7 +29,7 @@ for vreset in vreset_list:
         circuit.raw_spice = f"""
             * Load OSDI model
             .control
-            pre_osdi heracles_ngpsice.osdi
+            pre_osdi ../include/heracles_v0.2.1__osdi_v0.3.osdi
             .endc
 
             * Model definition with current parameters
