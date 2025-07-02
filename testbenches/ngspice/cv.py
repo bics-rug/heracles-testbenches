@@ -20,13 +20,18 @@ tsine = 1e-3
 splice = (tstop - tsine) / tstep
 
 fig, ax = plt.subplots(figsize=[3.45, 2.3])
-for vreset in vreset_list:
+for index_reset, vreset in enumerate(vreset_list):
     capacitances = []
 
-    for index, vset in enumerate(vset_list):
+    for index_set, vset in enumerate(vset_list):
+
+        run = index_reset * len(vset_list) + (index_set + 1)
+        logger.info(f"Run: {run} {vreset} V -> {vset} V")
 
         circuit = Circuit("FeCap parameter extraction")
         circuit.raw_spice = f"""
+            .options reltol=0.001 abstol=1e-12 gmin=1e-12
+
             * Load OSDI model
             .control
             pre_osdi ../include/heracles_v0.2.1__osdi_v0.3.osdi
