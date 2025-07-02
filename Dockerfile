@@ -8,7 +8,7 @@ ENV PATH=$PATH:/opt/openvaf
 ENV PATH=/opt/venv/bin:$PATH
 
 RUN apt-get update 
-RUN apt-get install -y ngspice clang python3 python3-pip python3-venv
+RUN apt-get install -y ngspice libngspice0-dev clang python3 python3-pip python3-venv
 
 ADD --checksum=sha256:${vacask_sha256sum} https://codeberg.org/arpadbuermen/VACASK/releases/download/_${vacask_version}/vacask_${vacask_version}_amd64.deb .
 RUN apt-get install -y ./vacask_${vacask_version}_amd64.deb 
@@ -23,4 +23,4 @@ COPY ./pyproject.toml /heracles-testbenches/pyproject.toml
 RUN python3 -m venv /opt/venv
 RUN pip3 install /heracles-testbenches
 
-WORKDIR /heracles-testbenchess
+WORKDIR /heracles-testbenches
