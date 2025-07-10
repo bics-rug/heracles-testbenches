@@ -14,7 +14,7 @@ ADD --checksum=sha256:${vacask_sha256sum} https://codeberg.org/arpadbuermen/VACA
 RUN apt-get install -y ./vacask_${vacask_version}_amd64.deb 
 RUN rm ./vacask_${vacask_version}_amd64.deb
 
-ADD --checksum=sha256:${openvaf_sha256sum} https://fides.fe.uni-lj.si/openvaf/download/openvaf-reloaded-osdi_${openvaf_version}-linux_x64.tar.gz/ .
+ADD --checksum=sha256:${openvaf_sha256sum} https://fides.fe.uni-lj.si/openvaf/download/openvaf-reloaded-osdi_${openvaf_version}-linux_x64.tar.gz .
 RUN mkdir /opt/openvaf 
 RUN tar --directory=/opt/openvaf -xvf openvaf-reloaded-osdi_${openvaf_version}-linux_x64.tar.gz
 RUN rm openvaf-reloaded-osdi_${openvaf_version}-linux_x64.tar.gz
