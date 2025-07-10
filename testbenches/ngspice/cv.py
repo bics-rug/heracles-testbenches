@@ -41,7 +41,7 @@ for index_reset, vreset in enumerate(vreset_list):
             .model fecap heracles ( 
                 + area = 1e-12
                 + t_fe = 10e-9 
-                + t_int = 2e-9 
+                + t_int = 0.5e-9 
                 + eps_fe = 70 
                 + eps_int = 7
                 + w_b = 1.05 
@@ -99,4 +99,4 @@ for index_reset, vreset in enumerate(vreset_list):
 
     ax.plot(vset_list, capacitances)
 
-fig.savefig("cv.png")
+fig.savefig("cv.png", dpi=600)

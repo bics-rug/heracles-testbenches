@@ -20,14 +20,14 @@ circuit.raw_spice = """
     .model fecap heracles ( 
         + area = 1e-12
         + t_fe = 10e-9 
-        + t_int = 2e-9 
-        + eps_fe = 70 
+        + t_int = 0.5e-9 
+        + eps_fe = 30 
         + eps_int = 7
         + w_b = 1.05 
         + d_e = 7.5e-9 
         + e_off = 1e7
-        + p_s = 20e-2 
-        + n_depl = 1.2e28 
+        + p_s = 25e-2 
+        + n_depl = 1.2e29
         + eps_depl = 2.2
         + q_fix_depl_u = -8e-2 
         + q_fix_depl_d = 20e-2 
@@ -37,7 +37,7 @@ circuit.raw_spice = """
         + phi_b_int = 2.7
         + mu_fe = 0.2
         + n_c_fe = 1e24 
-        + phi_tr_fe = 1.05 
+        + phi_tr_fe = 1.5 
         + area_mc = 0 
         + t_fe_mc = 0 
         + t_int_mc = 0 
@@ -56,6 +56,8 @@ analysis = simulator.transient(tstep, tstop)
 time = analysis.time
 voltage = analysis.vin
 current = -analysis.v1
+v_fe = analysis.nodes["n1#n_int"] - analysis.nodes["n1#n_be"]
+v_be = analysis.nodes["n1#n_be"]
 
 polarization = cumulative_trapezoid(current, time)
 
@@ -63,4 +65,11 @@ fig, axs = plt.subplots(2, figsize=[3.45, 2.3])
 axs[0].plot(voltage, current)
 axs[1].plot(voltage[:-1], polarization)
 
-fig.savefig("pv.png")
+fig.savefig("pv", dpi=600)
+
+fig, axs = plt.subplots(2, figsize=[3.45, 2.3])
+axs[0].plot(time*1e3, voltage)
+axs[1].plot(time*1e3, v_fe)
+axs[1].plot(time*1e3, v_be)
+
+fig.savefig("pv_internal.png", dpi=600)
