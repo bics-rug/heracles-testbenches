@@ -173,8 +173,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-.osdi
-.raw
-.va
-.png
-.lock
+*.raw
+*.va
+*.png
+*.lock
