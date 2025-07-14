@@ -22,5 +22,3 @@ RUN rm openvaf-reloaded-osdi_${openvaf_version}-linux_x64.tar.gz
 COPY ./pyproject.toml /heracles-testbenches/pyproject.toml
 RUN python3 -m venv /opt/venv
 RUN pip3 install /heracles-testbenches
-
-WORKDIR /heracles-testbenches
